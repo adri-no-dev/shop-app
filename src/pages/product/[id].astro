@@ -1,0 +1,27 @@
+---
+import site from "../../data/website.json";
+import products from "../../data/products.json";
+
+export function getStaticPaths()  {
+	return products.map((product, i) => ({
+		params: { id: String(i) }
+	}));
+}
+
+const { id } = Astro.params;
+const product = products[parseInt(id)];
+---
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{ site.name }</title>
+</head>
+
+<body>
+	<h2>{ product.name }</h2>
+	<p>{ product.description }</p>
+	<h3>{ product.price }</h3>
+	<button>Buy</button>
+</body>

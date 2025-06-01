@@ -1,0 +1,19 @@
+---
+import products from "../data/products.json";
+import site from "../data/website.json";
+
+import ProductCard from "../components/ProductCard.astro";
+---
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{ site.name }</title>
+</head>
+
+<body>{
+	products.map((product, i) => (
+	<ProductCard name={product.name} desc={product.desc} price={product.price} id={i}/>
+	)) 	
+}</body>
