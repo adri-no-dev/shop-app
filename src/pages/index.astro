@@ -1,14 +1,19 @@
 ---
 import site from "../data/website.json";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeader from "../components/PageHeader.astro";
 ---
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
-	<meta name="generator" content={Astro.generator} />
-	<title>{ site.name }</title>
-</head>
+<BaseLayout>
+	<div class="grid">
+		<PageHeader title="Acasă"/>
 
-<body>
-	<h1>Astro</h1>
-</body>
+		<div class="ml-3 mb-3">
+			<h2 class="mb-2">Bine ai venit!</h2>
+
+		<p>Mă numesc Cristi, am 14 ani și sunt pasionat de informatică. Am creat acest website personal pentru a împărtăși proiectele mele și, eventual, pentru a vinde diverse produse sau servicii legate de domeniul meu de interes.  </p>
+
+		<button class="border rounded-xl border-2 border-black pt-2 pb-2 ml-[30%] mr-[30%] pl-1 pr-1"><a href="/produse">Vezi toate produsele</a></button>
+	</div>
+</BaseLayout>

@@ -1,0 +1,50 @@
+---
+import "../styles/global.css";
+import site from "../data/website.json";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{ site.name }</title>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	</head>
+
+	<style>
+	.font-sans {
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	hr {
+		border: none; /* remove default */
+		height: 1.5px;  /* thickness */
+		background: linear-gradient(
+			to right, 
+			transparent, 
+			black,  /* your main color, e.g. indigo-600 */
+			transparent
+			);
+		margin: auto;
+		width: 90%;
+	}
+	</style>
+
+	<body class="font-sans">
+		<Header/>
+		<hr>
+
+		<article class="mb-2 mt-2">
+			<slot/>
+		</article>
+
+		<Footer/>
+	</body>
+</html>

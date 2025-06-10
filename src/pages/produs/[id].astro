@@ -1,0 +1,35 @@
+---
+import PageHeader from "../../components/PageHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+import site from "../../data/website.json";
+import products from "../../data/products.json";
+
+export function getStaticPaths()  {
+	return products.map((product, i) => ({
+		params: { id: String(i) }
+	}));
+}
+
+const { id, image } = Astro.params;
+const product = products[parseInt(id)];
+
+const body = `Bună ziua! Aș vrea să cumpăr următorul produs:\n
+
+${site.link}/products/${id}\n
+
+Numărul meu de telefon este: 07… . Aștept să mă contactați înapoi, vă mulțumesc.`.replace(" ", "%20").replace("\n", "%0A");
+---
+
+<BaseLayout>
+	<PageHeader title={`Produs: ${product.nume}`}/>
+
+	<div class="ml-3">
+		<p>{ product.desc }</p>
+
+		<img class="rounded-xl mt-2 mb-2 ml-3 h-30 w-auto object-fit" src={`/imagini-produse/${id}.png`} alt={ product.nume }>
+
+		<h3 class="mb-3">{ product.pret } preț + 20 transport = <b class="text-[#91BF67]">{parseInt(product.pret) + 20} RON</b> total</h3>
+		<a class="border rounded-xl bg-black text-white pl-3 pr-3 pt-2 pb-2" href={`mailto:${site.email}?subject=Cerere de cumpărare&body=${body}`}>Cumpără</a>
+	</div>
+</BaseLayout>

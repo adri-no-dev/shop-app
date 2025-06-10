@@ -1,10 +1,20 @@
 ---
+import "../styles/global.css";
+import data from "../data/website.json";
+
 const { name, desc, price, id } = Astro.props;
 ---
 
-<div>
-	<h3>{ name }</h3>
-	<p>{ desc }</p>
-	<h4>{ price } RON</h4>
-	<a href={`/product/${id}`}>See more</a>
+<style>
+.card-shadow {
+	box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3);
+}
+</style>
+
+<div class="grid grid-col-1 grid-row-4 gap-2 border rounded-2xl border-2 border-black ml-5 mr-5 mt-3 mb-4 pt-2 pl-3 pr-3 card-shadow">
+	<h2 class="text-center text-3xl font-semibold">{ name }</h2>
+	<p class="mb-3">{ desc }</p>
+	<p class="text-[#91BF67] font-bold">{ price } RON</p>
+
+	<a href={`/produs/${id}`} class="border rounded-xl border-2 bg-black text-white text-center pl-2 pr-2 pt-2 pb-2 mb-2">Vezi mai mult</a>
 </div>
